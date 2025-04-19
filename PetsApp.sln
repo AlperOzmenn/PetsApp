@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35707.178 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetsApp", "PetsApp\PetsApp.csproj", "{89A6D539-50B4-48D9-9ECE-07AC8C46D2BD}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PetsApp", "PetsApp", "{37CCEFDF-FC2D-415B-9A26-A9D5295C259F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetsApp.CORE", "PetsApp.CORE\PetsApp.CORE.csproj", "{A67D84F7-FB2F-4DA0-A9BB-C505CFE1D193}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,12 +13,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{89A6D539-50B4-48D9-9ECE-07AC8C46D2BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{89A6D539-50B4-48D9-9ECE-07AC8C46D2BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{89A6D539-50B4-48D9-9ECE-07AC8C46D2BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{89A6D539-50B4-48D9-9ECE-07AC8C46D2BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A67D84F7-FB2F-4DA0-A9BB-C505CFE1D193}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A67D84F7-FB2F-4DA0-A9BB-C505CFE1D193}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A67D84F7-FB2F-4DA0-A9BB-C505CFE1D193}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A67D84F7-FB2F-4DA0-A9BB-C505CFE1D193}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A67D84F7-FB2F-4DA0-A9BB-C505CFE1D193} = {37CCEFDF-FC2D-415B-9A26-A9D5295C259F}
 	EndGlobalSection
 EndGlobal
