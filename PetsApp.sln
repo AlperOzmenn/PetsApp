@@ -13,6 +13,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetsApp.SERVICE", "PetsApp.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetsApp.UI", "PetsApp.UI\PetsApp.UI.csproj", "{D537F0C2-72D3-4967-A6CD-9E67F07D56E0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9FEF9191-1EC7-41FC-B8D1-615CA266BF60}"
+	ProjectSection(SolutionItems) = preProject
+		Emojiler.txt = Emojiler.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
