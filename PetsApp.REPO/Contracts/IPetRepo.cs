@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PetsApp.CORE.Abstracts;
+using PetsApp.CORE.Models;
 
-namespace PetsApp.CORE.Models
+namespace PetsApp.REPO.Contracts
 {
-    public class Alert : BaseEntity
+    public interface IPetRepo : IBaseRepo<Pet>
     {
-
     }
 }

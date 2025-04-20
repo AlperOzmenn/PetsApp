@@ -11,6 +11,7 @@ namespace PetsApp.CORE.Models
 {
     public class ActivityLog : BaseEntity
     {
+        private double _temperature;
         private int _distanceTraveledInMeters;
         private int _minutesOfWalking;
         private int _minutesOfSleeping;
@@ -24,6 +25,14 @@ namespace PetsApp.CORE.Models
             MinutesOfWalking = minutesOfWalking;
             MinutesOfSleeping = minutesOfSleeping;
         }
+
+
+        public double Temperature
+        {
+            get { return _temperature; }
+            set { _temperature = value; }
+        }
+
 
         //Günlük kat edilen mesafe (metre)
         public int DistanceTraveledInMeters
