@@ -23,5 +23,20 @@ namespace PetsApp.CORE.Helpers
             else
                 throw new Exception("Doğum Günü Hatalı Lütfen Bugünden Önce Bir Tarih Giriniz!!!");
         }
+        public static double SetWeight(double weight)
+        {
+            if (weight <= 0)
+                throw new ArgumentOutOfRangeException($"{nameof(weight)} 0'dan küçük olamaz!");
+            else
+                return weight;
+        }
+
+        public static int DistanceOrTimeCheck(int distanceOrTime)
+        {
+            if (distanceOrTime <= 0)
+                throw new ArgumentOutOfRangeException($"{nameof(distanceOrTime)} 0'dan küçük olamaz!");
+            else
+                return distanceOrTime;
+        }
     }
 }

@@ -15,7 +15,6 @@ namespace PetsApp.CORE.Enums
         Kitchen = 5,
         Bedroom = 6,
         Garden = 7,
-        OutsideTheHouse = 8,
-
+        OutsideTheHouse = 8
     }
 }

@@ -5,11 +5,16 @@ using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 using PetsApp.CORE.Abstracts;
+using PetsApp.CORE.Helpers;
 
 namespace PetsApp.CORE.Models
 {
     public class ActivityLog : BaseEntity
     {
+        private int _distanceTraveledInMeters;
+        private int _minutesOfWalking;
+        private int _minutesOfSleeping;
+
         public ActivityLog() { }
 
         public ActivityLog(int trackerDeviceId, int distanceTraveledInMeters, int minutesOfWalking,int minutesOfSleeping )
@@ -20,9 +25,27 @@ namespace PetsApp.CORE.Models
             MinutesOfSleeping = minutesOfSleeping;
         }
 
-        public int DistanceTraveledInMeters { get; set; } = 0;
-        public int MinutesOfWalking { get; set; } = 0;
-        public int MinutesOfSleeping { get; set; } = 0;
+        //Günlük kat edilen mesafe (metre)
+        public int DistanceTraveledInMeters
+        {
+            get { return _distanceTraveledInMeters; }
+            set { _distanceTraveledInMeters = ValidationHelper.DistanceOrTimeCheck(value); }
+        }
+
+
+        //Yürüme süresi (dk)
+        public int MinutesOfWalking
+        {
+            get { return _minutesOfWalking; }
+            set { _minutesOfWalking = ValidationHelper.DistanceOrTimeCheck(value); }
+        }
+
+        //Uyku süresi (dk)
+        public int MinutesOfSleeping
+        {
+            get { return _minutesOfSleeping; }
+            set { _minutesOfSleeping = ValidationHelper.DistanceOrTimeCheck(value); }
+        }
 
         //Navigation Props
         public int TrackerDeviceId { get; set; }

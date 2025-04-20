@@ -21,18 +21,21 @@ namespace PetsApp.CORE.Models
 			LastName = lastName;
         }
 
+        //İsim
+        public string FirstName
+        {
+            get { return _firstName; }
+            set { _firstName = ValidationHelper.SetData(value); }
+        }
+
+        //Soyisim
         public string LastName
 		{
 			get { return _lastName; }
 			set { _lastName = ValidationHelper.SetData(value); }
 		}
 
-		public string FirstName
-		{
-			get { return _firstName; }
-			set { _firstName = ValidationHelper.SetData(value); }
-		}
-
+        //Tamad
 		public string FullName => _firstName + " " + _lastName;
 
 		//Navigation Props

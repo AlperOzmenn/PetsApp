@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace PetsApp.CORE.Enums
 {
-    public enum VaccinationInfo
+    public enum Status
     {
-        Unknown = 0,
-        Full = 1,
-        Missing = 2,
-        None = 3,
+        Created = 0,
+        Updated = 1,
+        Deleted = 2
     }
 }

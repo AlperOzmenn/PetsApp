@@ -11,11 +11,13 @@ namespace PetsApp.CORE.Models
     public class TrackerDevice : BaseEntity
     {
         public TrackerDevice() { }
-        public TrackerDevice(GpsLocation gpsLocation, int petId)
+        public TrackerDevice(int petId, GpsLocation gpsLocation)
         {
             GpsLocation = gpsLocation;
             PetId = petId;
         }
+
+        //Gps konumu
         public GpsLocation GpsLocation { get; set; } = 0;
 
         //Navigation Props

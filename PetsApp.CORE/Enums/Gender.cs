@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace PetsApp.CORE.Enums
 {
-    public enum VaccinationInfo
+    public enum Gender
     {
-        Unknown = 0,
-        Full = 1,
-        Missing = 2,
-        None = 3,
+        Male = 1,
+        Female = 2,
     }
 }

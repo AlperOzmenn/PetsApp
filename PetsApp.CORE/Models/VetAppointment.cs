@@ -9,5 +9,8 @@ namespace PetsApp.CORE.Models
 {
     public class VetAppointment : BaseEntity
     {
+
+
+
     }
 }
