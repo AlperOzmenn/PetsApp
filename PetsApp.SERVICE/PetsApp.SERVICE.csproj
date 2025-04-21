@@ -6,4 +6,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Concretes\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PetsApp.CORE\PetsApp.CORE.csproj" />
+    <ProjectReference Include="..\PetsApp.REPO\PetsApp.REPO.csproj" />
+  </ItemGroup>
+
 </Project>

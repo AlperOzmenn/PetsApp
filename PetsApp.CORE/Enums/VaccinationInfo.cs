@@ -11,6 +11,6 @@ namespace PetsApp.CORE.Enums
         Unknown = 0,
         Full = 1,
         Missing = 2,
-        None = 3,
+        None = 3
     }
 }

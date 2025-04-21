@@ -16,7 +16,7 @@ namespace PetsApp.REPO.Concretes
         public IQueryable<Pet> GetTheMostWalkers() //En çok yürüyen hayvanların IQueryable'ını döndürür.
         {
             int mostWalking = _context.ActivityLogs.Max(e => e.DistanceTraveledInMeters);
-            return _context.ActivityLogs.Include(e => e.TrackerDevice)
+            return _context.ActivityLogs.Include(e => e.TrackerDevice) //Eagle Loading
                 .ThenInclude(e => e.Pet)
                 .Where(e => e.DistanceTraveledInMeters == mostWalking)
                 .Select(e => e.TrackerDevice.Pet);

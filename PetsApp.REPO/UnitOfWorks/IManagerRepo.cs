@@ -4,7 +4,6 @@ namespace PetsApp.REPO.UnitOfWorks
 {
     internal interface IManagerRepo
     {
-        
         IPetRepo Pets { get; }
         IPetOwnerRepo PetOwners { get; }
         IHealthRecordRepo HealthRecords { get; }

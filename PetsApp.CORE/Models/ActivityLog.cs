@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.ConstrainedExecution;
-using System.Text;
-using System.Threading.Tasks;
-using PetsApp.CORE.Abstracts;
+﻿using PetsApp.CORE.Abstracts;
 using PetsApp.CORE.Helpers;
 
 namespace PetsApp.CORE.Models
@@ -26,7 +20,7 @@ namespace PetsApp.CORE.Models
             MinutesOfSleeping = minutesOfSleeping;
         }
 
-
+        //Ateşi kaç
         public double Temperature
         {
             get { return _temperature; }

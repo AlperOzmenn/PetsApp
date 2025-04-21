@@ -15,8 +15,9 @@ namespace PetsApp.CORE.Models
         {
             BirthDate = DateTime.Now;
         }
-        public Pet(string breed, string type, DateTime birthDate)
+        public Pet(string name, string breed, string type, DateTime birthDate)
         {
+            Name = name;
             Breed = breed;
 			Type = type;
 			BirthDate = birthDate;
