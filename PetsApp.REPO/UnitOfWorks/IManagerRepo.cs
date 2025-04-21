@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PetsApp.REPO.Contracts;
+﻿using PetsApp.REPO.Contracts;
 
 namespace PetsApp.REPO.UnitOfWorks
 {
