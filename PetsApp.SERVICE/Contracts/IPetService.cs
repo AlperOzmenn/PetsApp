@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PetsApp.CORE.Models;
+﻿using PetsApp.CORE.Models;
 
 namespace PetsApp.SERVICE.Contracts
 {
@@ -18,4 +13,5 @@ namespace PetsApp.SERVICE.Contracts
         IEnumerable<Pet> GetAllNoTrack();
         IEnumerable<Pet> GetByName(string name);
     }
+
 }

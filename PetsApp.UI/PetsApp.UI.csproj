@@ -7,4 +7,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PetsApp.CORE\PetsApp.CORE.csproj" />
+    <ProjectReference Include="..\PetsApp.REPO\PetsApp.REPO.csproj" />
+    <ProjectReference Include="..\PetsApp.SERVICE\PetsApp.SERVICE.csproj" />
+  </ItemGroup>
+
 </Project>

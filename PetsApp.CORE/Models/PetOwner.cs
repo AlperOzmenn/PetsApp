@@ -45,7 +45,7 @@ namespace PetsApp.CORE.Models
 
         public override string ToString()
         {
-			return $"Hayvan Sahibi Id: {Id} - Hayvan Sahibi İsmi: {FullName}";
+			return $"Pet Owner Id: {Id} - Pet Owner Full Name: {FullName}";
         }
 
     }

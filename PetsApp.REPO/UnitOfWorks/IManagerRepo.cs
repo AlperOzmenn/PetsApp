@@ -2,7 +2,7 @@
 
 namespace PetsApp.REPO.UnitOfWorks
 {
-    internal interface IManagerRepo
+    public interface IManagerRepo
     {
         IPetRepo Pets { get; }
         IPetOwnerRepo PetOwners { get; }

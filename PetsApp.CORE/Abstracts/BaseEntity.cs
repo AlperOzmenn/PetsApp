@@ -7,7 +7,7 @@ using PetsApp.CORE.Enums;
 
 namespace PetsApp.CORE.Abstracts
 {
-    public class BaseEntity
+    public abstract class BaseEntity
     {
         //🐱🐶🐰
         public int Id { get; set; }

@@ -12,8 +12,9 @@ namespace PetsApp.CORE.Models
 
         public ActivityLog() { }
 
-        public ActivityLog(int trackerDeviceId, int distanceTraveledInMeters, int minutesOfWalking,int minutesOfSleeping )
+        public ActivityLog(double tempature, int trackerDeviceId, int distanceTraveledInMeters, int minutesOfWalking,int minutesOfSleeping )
         {
+            Temperature = tempature;
             TrackerDeviceId = trackerDeviceId;
             DistanceTraveledInMeters = distanceTraveledInMeters;
             MinutesOfWalking = minutesOfWalking;
@@ -24,7 +25,7 @@ namespace PetsApp.CORE.Models
         public double Temperature
         {
             get { return _temperature; }
-            set { _temperature = value; }
+            set { _temperature = ValidationHelper.TemperatureCheck(value); }
         }
 
 
