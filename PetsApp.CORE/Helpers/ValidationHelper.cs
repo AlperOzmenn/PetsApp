@@ -11,7 +11,7 @@ namespace PetsApp.CORE.Helpers
         public static string SetData(string value)
         {
             if (string.IsNullOrWhiteSpace(value))
-                throw new ArgumentNullException($"{nameof(value)} boş geçilemez!");
+                throw new ArgumentNullException($"{nameof(value)} this field cannot be empty!");
             else
                 return value;
         }
@@ -21,19 +21,19 @@ namespace PetsApp.CORE.Helpers
             if (birthDate < DateTime.Now)
                 return birthDate;
             else
-                throw new Exception("Doğum Günü Hatalı Lütfen Bugünden Önce Bir Tarih Giriniz!!!");
+                throw new Exception("Birthday Incorrect Please Enter a Date Before Today!!!");
         }
         public static DateTime AppointmentCheck(DateTime appointmentDate)
         {
             if (appointmentDate > DateTime.Now)
                 return appointmentDate;
             else
-                throw new Exception("Randevu Tarihi Hatalı Lütfen Bugünden Sonra Bir Tarih Giriniz!!!");
+                throw new Exception("The Appointment Date is Incorrect Please Enter a Date After Today!!!");
         }
         public static double SetWeight(double weight)
         {
             if (weight <= 0 || weight >= 50)
-                throw new ArgumentOutOfRangeException($"{nameof(weight)} UYARI: AĞIRLIK PROBLEMİ TESPİT EDİLDİ!!!");
+                throw new ArgumentOutOfRangeException($"{nameof(weight)} WARNING: WEIGHT PROBLEM DETECTED!!!");
             else
                 return weight;
         }
@@ -49,7 +49,7 @@ namespace PetsApp.CORE.Helpers
         public static double TemperatureCheck(double temperature)
         {
             if (temperature < 38 || temperature > 39)
-                throw new ArgumentOutOfRangeException($"{nameof(temperature)} UYARI: EN YAKIN VETERİNERE GİDİNİZ!!!");
+                throw new ArgumentOutOfRangeException($"{nameof(temperature)} WARNING: INACTIVITY DETECTED!!!");
             else
                 return temperature;
         }

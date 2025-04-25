@@ -17,24 +17,24 @@ namespace PetsApp.SERVICE.Concretes
         {
 
             if (string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName))
-                throw new ValidationException("FirstName - LastName ", "Ad  veya Soyad alanı boş geçildi");
+                throw new ValidationException("FirstName - LastName ", "First Name  or Last Name areas passed empty.");
 
             _repo.PetOwners.Create(new PetOwner(firstName, lastName));
 
             if (!_repo.Save())
-                throw new Exception("PetOwner kayıt edilmedi!");
+                throw new Exception("PetOwner not registered!");
         }
 
         public void Delete(int id)
         {
             var petOwner = _repo.PetOwners.GetById(id);
             if (petOwner is null)
-                throw new NotFoundException("pet", id);
+                throw new NotFoundException("petowner", id);
 
             _repo.PetOwners.Delete(petOwner, false);
 
             if (!_repo.Save())
-                throw new Exception("PetOwner silinemedi!");
+                throw new Exception("PetOwner could not be deleted!");
         }
 
         public PetOwner Get(int id)
@@ -70,11 +70,14 @@ namespace PetsApp.SERVICE.Concretes
             _repo.PetOwners.Delete(petOwner);
 
             if (!_repo.Save())
-                throw new Exception("PetOwner kayıt edilemedi!");
+                throw new Exception("PetOwner not registered!");
         }
 
         public void Update(int id, string firstName, string lastName)
         {
+            if (string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName))
+                throw new ValidationException("FirstName - LastName ", "First Name  or Last Name areas passed empty.");
+
             var petOwner = _repo.PetOwners.GetById(id);
 
             petOwner.FirstName = firstName;
@@ -83,7 +86,7 @@ namespace PetsApp.SERVICE.Concretes
             _repo.PetOwners.Update(petOwner);
 
             if (!_repo.Save())
-                throw new Exception("PetOwner güncellenemedi!");
+                throw new Exception("PetOwner failed to update!");
         }
     }
 }

@@ -16,10 +16,10 @@ namespace PetsApp.SERVICE.Concretes
         public void Add(int petId, GpsLocation gpsLocation)
         {
             if (string.IsNullOrEmpty(petId.ToString()) || string.IsNullOrEmpty(gpsLocation.ToString()))
-                throw new ValidationException("PetId - GpsLocation", "PetId veya GpsLocation alanı boş geçildi");
+                throw new ValidationException("PetId - GpsLocation", "PetId or GpsLocation areas passed empty.");
             _repo.TrackerDevices.Create(new TrackerDevice(petId, gpsLocation));
             if (!_repo.Save())
-                throw new Exception("TrackerDevice kayıt edilmedi!");
+                throw new Exception("TrackerDevice not registered!");
         }
 
         public void Delete(int id)
@@ -29,7 +29,7 @@ namespace PetsApp.SERVICE.Concretes
                 throw new NotFoundException("trackerDevice", id);
             _repo.TrackerDevices.Delete(trackerDevice, false);
             if (!_repo.Save())
-                throw new Exception("TrackerDevice kayıt edilmedi!!");
+                throw new Exception("TrackerDevice not registered!");
         }
 
         public TrackerDevice Get(int id)
@@ -57,17 +57,20 @@ namespace PetsApp.SERVICE.Concretes
                 throw new NotFoundException("trackerDevice", id);
             _repo.TrackerDevices.Delete(trackerDevice);
             if (!_repo.Save())
-                throw new Exception("TrackerDevice kayıt edilemedi!");
+                throw new Exception("TrackerDevice not registered!");
         }
 
         public void Update(int id, int petId, GpsLocation gpsLocation)
         {
+            if (string.IsNullOrEmpty(petId.ToString()) || string.IsNullOrEmpty(gpsLocation.ToString()))
+                throw new ValidationException("PetId - GpsLocation", "PetId or GpsLocation areas passed empty."); 
+
             var trackerDevice = _repo.TrackerDevices.GetById(id);
             trackerDevice.PetId = petId;
             trackerDevice.GpsLocation = gpsLocation;
             _repo.TrackerDevices.Update(trackerDevice);
             if (!_repo.Save())
-                throw new Exception("TrackerDevice güncellenemedi!");
+                throw new Exception("TrackerDevice failed to update!");
         }
     }
 }

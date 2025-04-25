@@ -17,13 +17,13 @@ namespace PetsApp.SERVICE.Concretes
         {
             if (string.IsNullOrEmpty(weight.ToString()) || string.IsNullOrEmpty(gender.ToString()) || string.IsNullOrEmpty(vaccinationInfo.ToString()))
             {
-                throw new ValidationException("Weight - Gender - VaccinationInfo", "Kilo, cins veya aşı bilgileri alanı boş geçildi.");
+                throw new ValidationException("Weight - Gender - VaccinationInfo", "Weight, Gender or Vaccination Info areas passed empty.");
 
 
                 _repo.HealthRecords.Create(new HealthRecord(weight, gender, vaccinationInfo, allergies));
 
                 if (!_repo.Save())
-                    throw new Exception("Sağlık Kaydı kayıt edilmedi!");
+                    throw new Exception("Health Record not registered!");
             }
         }
 
@@ -31,19 +31,19 @@ namespace PetsApp.SERVICE.Concretes
         {
             var healthRecord = _repo.HealthRecords.GetById(id);
             if (healthRecord is null)
-                throw new NotFoundException("sağlık kaydı", id);
+                throw new NotFoundException("health record", id);
 
             _repo.HealthRecords.Delete(healthRecord, false);
 
             if (!_repo.Save())
-                throw new Exception("Sağlık Kaydı, kayıt edilemedi!");
+                throw new Exception("Health Record not registered!");
         }
 
         public HealthRecord Get(int id)
         {
             var healthRecord = _repo.HealthRecords.GetById(id);
             if (healthRecord is null)
-                throw new NotFoundException("sağlık kaydı", id);
+                throw new NotFoundException("health record", id);
 
             return healthRecord;
         }
@@ -62,27 +62,32 @@ namespace PetsApp.SERVICE.Concretes
         {
             var healthRecord = _repo.HealthRecords.GetById(id);
             if (healthRecord is null)
-                throw new NotFoundException("sağlık kaydı", id);
+                throw new NotFoundException("health record", id);
 
             _repo.HealthRecords.Delete(healthRecord);
 
             if (!_repo.Save())
-                throw new Exception("Sağlık Kaydı, kayıt edilemedi!");
+                throw new Exception("Health Record not registered!");
         }
 
         public void Update(int id, double weight, Gender gender, VaccinationInfo vaccinationInfo, List<Allergie> allergies)
         {
-            var healthRecord = _repo.HealthRecords.GetById(id);
+            if (string.IsNullOrEmpty(weight.ToString()) || string.IsNullOrEmpty(gender.ToString()) || string.IsNullOrEmpty(vaccinationInfo.ToString()))
+            {
+                throw new ValidationException("Weight - Gender - VaccinationInfo", "Weight, Gender or Vaccination Info areas passed empty.");
 
-            healthRecord.Weight = weight;
-            healthRecord.Gender = gender;
-            healthRecord.VaccinationInfo = vaccinationInfo;
-            healthRecord.Allergies = allergies;
+                var healthRecord = _repo.HealthRecords.GetById(id);
 
-            _repo.HealthRecords.Update(healthRecord);
+                healthRecord.Weight = weight;
+                healthRecord.Gender = gender;
+                healthRecord.VaccinationInfo = vaccinationInfo;
+                healthRecord.Allergies = allergies;
 
-            if (!_repo.Save())
-                throw new Exception("Sağlık Kaydı güncellenemedi!");
+                _repo.HealthRecords.Update(healthRecord);
+
+                if (!_repo.Save())
+                    throw new Exception("Failed to update the Health Record.!");
+            }
         }
     }
 }

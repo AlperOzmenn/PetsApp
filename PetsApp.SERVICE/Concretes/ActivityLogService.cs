@@ -17,13 +17,13 @@ namespace PetsApp.SERVICE.Concretes
         {
             if (string.IsNullOrEmpty(tempature.ToString())|| string.IsNullOrEmpty(trackerDeviceId.ToString())||string.IsNullOrEmpty(distanceTraveledInMeters.ToString()) || string.IsNullOrEmpty(minutesOfWalking.ToString()) || string.IsNullOrEmpty(minutesOfSleeping.ToString()))
             {
-                throw new ValidationException("Tempature - TrackerDeviceId - DistanceTraveledInMeters - MinutesOfWalking - minutesOfSleeping", "Sıcaklık - Cihaz Id - Mesafe - Yürüyüş Süresi - Uyuma Süresi alanları boş geçildi");
+                throw new ValidationException("Tempature - TrackerDeviceId - DistanceTraveledInMeters - MinutesOfWalking - minutesOfSleeping", "Tempature - Tracker Device Id - Distance Traveled - Walk Duration - Sleep Duration empty fields passed");
             }
             
             _repo.ActivityLogs.Create(new ActivityLog(tempature, trackerDeviceId, distanceTraveledInMeters, minutesOfWalking, minutesOfSleeping));
 
             if (!_repo.Save())
-                throw new Exception("Activity kayıt edilmedi!");
+                throw new Exception("Activity not registered!");
 
         }
 
@@ -31,19 +31,19 @@ namespace PetsApp.SERVICE.Concretes
         {
             var activityLog = _repo.ActivityLogs.GetById(id);
             if (activityLog is null)
-                throw new NotFoundException("aktivite", id);
+                throw new NotFoundException("activity", id);
 
             _repo.ActivityLogs.Delete(activityLog, false);
 
             if (!_repo.Save())
-                throw new Exception("Aktivite kayıt edilemedi!");
+                throw new Exception("Activity not registered!");
         }
 
         public ActivityLog Get(int id)
         {
             var activityLog = _repo.ActivityLogs.GetById(id);
             if (activityLog is null)
-                throw new NotFoundException("aktivite", id);
+                throw new NotFoundException("activity", id);
 
             return activityLog;
         }
@@ -62,16 +62,20 @@ namespace PetsApp.SERVICE.Concretes
         {
             var activityLog = _repo.ActivityLogs.GetById(id);
             if (activityLog is null)
-                throw new NotFoundException("aktivite", id);
+                throw new NotFoundException("activity", id);
 
             _repo.ActivityLogs.Delete(activityLog);
 
             if (!_repo.Save())
-                throw new Exception("Aktivite kayıt edilemedi!");
+                throw new Exception("Activity not registered!");
         }
 
         public void Update(int id, double tempature, int trackerDeviceId, int distanceTraveledInMeters, int minutesOfWalking, int minutesOfSleeping)
         {
+            if (string.IsNullOrEmpty(tempature.ToString()) || string.IsNullOrEmpty(trackerDeviceId.ToString()) || string.IsNullOrEmpty(distanceTraveledInMeters.ToString()) || string.IsNullOrEmpty(minutesOfWalking.ToString()) || string.IsNullOrEmpty(minutesOfSleeping.ToString()))
+            {
+                throw new ValidationException("Tempature - TrackerDeviceId - DistanceTraveledInMeters - MinutesOfWalking - minutesOfSleeping", "Tempature - Tracker Device Id - Distance Traveled - Walk Duration - Sleep Duration empty fields passed");
+            }
             var activityLog = _repo.ActivityLogs.GetById(id);
 
             activityLog.Temperature = tempature;
@@ -83,7 +87,7 @@ namespace PetsApp.SERVICE.Concretes
             _repo.ActivityLogs.Update(activityLog);
 
             if (!_repo.Save())
-                throw new Exception("Aktivite güncellenemedi!");
+                throw new Exception("Failed to update activity!");
         }
     }
 }

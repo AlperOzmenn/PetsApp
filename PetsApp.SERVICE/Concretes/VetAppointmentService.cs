@@ -17,10 +17,10 @@ namespace PetsApp.SERVICE.Concretes
         {
 
             if (string.IsNullOrEmpty(vetName) || string.IsNullOrEmpty(description) || string.IsNullOrEmpty(appointmentDate.ToString()))
-                throw new ValidationException("VetName - Description - AppointmentDate", "Veteriner adı, açıklama veya randevu tarihi alanı boş geçildi");
+                throw new ValidationException("VetName - Description - AppointmentDate", "VetName, Description or AppointmentDate areas passed empty.");
             _repo.VetAppointments.Create(new VetAppointment(vetName, description, appointmentDate));
             if (!_repo.Save())
-                throw new Exception("VetAppointment kayıt edilmedi!");
+                throw new Exception("VetAppointment not registered!");
         }
 
         public void Delete(int id)
@@ -30,7 +30,7 @@ namespace PetsApp.SERVICE.Concretes
                 throw new NotFoundException("vetAppointment", id);
             _repo.VetAppointments.Delete(vetAppointment, false);
             if (!_repo.Save())
-                throw new Exception("VetAppointment kayıt edilmedi!");
+                throw new Exception("VetAppointment not registered!");
         }
 
         public VetAppointment Get(int id)
@@ -58,18 +58,21 @@ namespace PetsApp.SERVICE.Concretes
                 throw new NotFoundException("vetAppointment", id);
             _repo.VetAppointments.Delete(vetAppointment);
             if (!_repo.Save())
-                throw new Exception("VetAppointment kayıt edilemedi!");
+                throw new Exception("VetAppointment not registered!");
         }
 
         public void Update(int id, string vetName, string description, DateTime appointmentDate)
         {
+            if (string.IsNullOrEmpty(vetName) || string.IsNullOrEmpty(description) || string.IsNullOrEmpty(appointmentDate.ToString()))
+                throw new ValidationException("VetName - Description - AppointmentDate", "VetName, Description or AppointmentDate areas passed empty.");
+
             var vetAppointment = _repo.VetAppointments.GetById(id);
             vetAppointment.VetName = vetName;
             vetAppointment.Description = description;
             vetAppointment.AppointmentDate = appointmentDate;
             _repo.VetAppointments.Update(vetAppointment);
             if (!_repo.Save())
-                throw new Exception("VetAppointment güncellenemedi!");
+                throw new Exception("VetAppointment failed to update!");
         }
     }
 

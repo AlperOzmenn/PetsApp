@@ -57,7 +57,7 @@ namespace PetsApp.CORE.Models
 
         public override string ToString()
         {
-            return $"Günlük Veriler:\nKat Edilen Mesafe: {DistanceTraveledInMeters} Metre - Yürüyüş Süresi: {MinutesOfWalking} DK - Uyku Süresi: {MinutesOfSleeping} DK";
+            return $"Daily Data:\nDistance Traveled: {DistanceTraveledInMeters} Meter - Walk Duration: {MinutesOfWalking} Minute - Sleep Duration: {MinutesOfSleeping} Minute";
         }
 
     }

@@ -56,7 +56,7 @@ namespace PetsApp.CORE.Models
 
         public override string ToString()
         {
-            return $"Aşı Bilgileri: {VaccinationInfo} - Alerjiler: {Allergies?.ToString()}";//alerjiler gelicek mi bilmiyorum :D
+            return $"Weight: {Weight} - Gender: {Gender} - Vaccination Information: {VaccinationInfo} - Allergies: {Allergies?.ToString()}";//alerjiler gelicek mi bilmiyorum :D
         }
     }
 }

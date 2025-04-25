@@ -44,7 +44,7 @@ namespace PetsApp.CORE.Models
 
         public override string ToString()
         {
-            return $"Randevu Tarihi: {AppointmentDate} - Veteriner Adı: {VetName} - Açıklama: {Description}";
+            return $"Appointment Date: {AppointmentDate} - Veterinarian Name: {VetName} - Description: {Description}";
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-using System.Reflection;
+﻿using System.Reflection;
 using PetsApp.CORE.Enums;
 using PetsApp.CORE.Models;
 using PetsApp.REPO.Contexts;
@@ -24,19 +22,19 @@ namespace PetsApp.UI
             IVetAppointmentService vetAppointmentService = new VetAppointmentService(manager);
 
             Console.OutputEncoding = System.Text.Encoding.UTF8;
-            Console.WriteLine("Kedi: 🐱");
-        start:
+            start:
             bool exit = true;
             string firstName, lastName, result, breed,name, type;
             int id;
             DateTime birthDate;
+            Console.WriteLine("\t\tWELCOME TO PETSAPP 🐮\n");
 
             while (exit)
             {
-                Console.WriteLine("1-Pet Owner\n2-Pet\n3-Tracker Device\n4-Activity Log\n5-Health Record\n6-Vet Appointment\n7-Exit\nSelect the item you want to process.[1-7]");
-            result = Console.ReadLine();
+                Console.WriteLine("1-Pet Owner 🐶\n2-Pet 🐱\n3-Tracker Device 🐰\n4-Activity Log 🐼\n5-Health Record 🦁\n6-Vet Appointment 🐦\n7-Exit 🐟\nSelect the item you want to process.[1-7]");
+                result = Console.ReadLine();
             
-            PetOwner petOwner = new();
+                 PetOwner petOwner = new();
 
                 switch (result)
                 {
@@ -515,11 +513,11 @@ namespace PetsApp.UI
                         }
                         break;
                     case "7":
-                        Console.WriteLine("Çıkış yapılıyor...");
+                        Console.WriteLine("Exit is in progress...");
                         exit = false;
                         break;
                     default:
-                        Console.WriteLine("Hatalı giriş yaptınız tekrar deneyiniz!!!");
+                        Console.WriteLine("You logged in incorrectly, try again!!!");
                         break;
                 }
             }

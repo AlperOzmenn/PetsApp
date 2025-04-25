@@ -69,7 +69,7 @@ namespace PetsApp.CORE.Models
 
         public override string ToString()
         {
-			return $"Çip Numarası : {ChipNo} - Hayvan İsmi: {Name} - Tür: {Type} - Cins: {Breed} - Doğum Tarihi: {BirthDate} - Yaş: {Age}";
+			return $"Chip Number: {ChipNo} - Animal Name: {Name} - Type: {Type} - Breed: {Breed} - Birth Date: {BirthDate} - Age: {Age}";
         }
 
     }

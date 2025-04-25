@@ -16,12 +16,12 @@ namespace PetsApp.SERVICE.Concretes
         public void Add(string name, string breed, string type, DateTime birthDate)
         {
             if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(breed) || string.IsNullOrEmpty(type) || string.IsNullOrEmpty(birthDate.ToString()))
-                throw new ValidationException("Name - Breed - Type - BirthDate", "Ad cins veya tür alanı boş geçildi");
+                throw new ValidationException("Name - Breed - Type - BirthDate", "Name Breed or Type areas passed empty.");
 
             _repo.Pets.Create(new Pet(name, breed, type, birthDate));
 
             if (!_repo.Save())
-                throw new Exception("Pet kayıt edilmedi!");
+                throw new Exception("Pet not registered!");
         }
 
         public void Delete(int id)
@@ -33,7 +33,7 @@ namespace PetsApp.SERVICE.Concretes
             _repo.Pets.Delete(pet, false);
 
             if (!_repo.Save())
-                throw new Exception("Pet kayıt edilemedi!");
+                throw new Exception("Pet not registered!");
         }
 
         public Pet Get(int id)
@@ -69,11 +69,14 @@ namespace PetsApp.SERVICE.Concretes
             _repo.Pets.Delete(pet);
 
             if (!_repo.Save())
-                throw new Exception("Pet kayıt edilemedi!");
+                throw new Exception("Pet not registered!");
         }
 
         public void Update(int id, string name, string breed, string type, DateTime birthDate)
         {
+            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(breed) || string.IsNullOrEmpty(type) || string.IsNullOrEmpty(birthDate.ToString()))
+                throw new ValidationException("Name - Breed - Type - BirthDate", "Name Breed or Type areas passed empty.");
+
             var pet = _repo.Pets.GetById(id);
 
             pet.Name = name;
@@ -83,7 +86,7 @@ namespace PetsApp.SERVICE.Concretes
             _repo.Pets.Update(pet);
 
             if (!_repo.Save())
-                throw new Exception("Pet güncellenemedi!");
+                throw new Exception("Pet failed to update!");
         }
     }
 }

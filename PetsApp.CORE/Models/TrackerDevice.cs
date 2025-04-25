@@ -27,7 +27,7 @@ namespace PetsApp.CORE.Models
 
         public override string ToString()
         {
-            return $"Takip Cihazı Id: {Id} - Gps Konum: {GpsLocation}";
+            return $"Tracker Device Id: {Id} - Gps Location: {GpsLocation}";
         }
     }
 }
