@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using Microsoft.EntityFrameworkCore;
+using PetsApp.CORE.Enums;
 using PetsApp.CORE.Models;
 
 namespace PetsApp.REPO.Contexts
@@ -23,6 +24,7 @@ namespace PetsApp.REPO.Contexts
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());//Bütün Configsleri ekler.
+            modelBuilder.Entity<List<Allergie>>().HasNoKey();
         }
 
     }

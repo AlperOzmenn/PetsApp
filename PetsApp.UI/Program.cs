@@ -25,6 +25,7 @@ namespace PetsApp.UI
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
             MainUI(petOwnerService, petService, healthRecordService, trackerDeviceService, activityLogService, vetAppointmentService);
+
         }
 
         private static void MainUI(IPetOwnerService petOwnerService, IPetService petService, IHealthRecordService healthRecordService, ITrackerDeviceService trackerDeviceService, IActivityLogService activityLogService, IVetAppointmentService vetAppointmentService)
@@ -32,11 +33,11 @@ namespace PetsApp.UI
             bool exit = true;
             string result;
 
-            Console.WriteLine("\t\tWELCOME TO PETSAPP 🐮\n");
+            Console.WriteLine("\t\tWELCOME TO PETSAPP 🐱\n");
 
             while (exit)
             {
-                Console.WriteLine("1-Pet Owner 🐱\n2-Pet 🐶\n3-Tracker Device 🐰\n4-Activity Log 🐼\n5-Health Record 🦁\n6-Vet Appointment 🐦\n7-Exit 🐟\nSelect the item you want to process.[1-7]");
+                Console.WriteLine("1-Pet Owner 🐶\n2-Pet 🐮\n3-Tracker Device 🐰\n4-Activity Log 🐼\n5-Health Record 🦁\n6-Vet Appointment 🐦\n7-Exit 🐟\nSelect the item you want to process.[1-7]");
                 result = Console.ReadLine();
 
                 switch (result)
@@ -162,7 +163,7 @@ namespace PetsApp.UI
         static void PetUI(IPetService petService)
         {
             string name, type, breed, result;
-            int id;
+            int id, petOwnerId;
             DateTime birthDate;
             Pet pet;
 
@@ -177,6 +178,8 @@ namespace PetsApp.UI
             switch (result)
             {
                 case "1":
+                    Console.WriteLine("🐱 Enter the pet owner ıd of the pet you want to add.");
+                    petOwnerId = int.Parse(Console.ReadLine());
                     Console.WriteLine("🐱 Enter the name of the pet you want to add.");
                     name = Console.ReadLine();
                     Console.WriteLine("🐱 Enter the type of the pet you want to add.");
@@ -185,7 +188,7 @@ namespace PetsApp.UI
                     breed = Console.ReadLine();
                     Console.WriteLine("🐱 Enter the birth date of the pet you want to add.");
                     birthDate = Convert.ToDateTime(Console.ReadLine());
-                    petService.Add(name, type, breed, birthDate);
+                    petService.Add(petOwnerId, name, type, breed, birthDate);
                     break;
                 case "2":
                     Console.Write("🐱 Pet Id: ");
@@ -408,7 +411,7 @@ namespace PetsApp.UI
         static void HealthRecord(IHealthRecordService healthRecordService)
         {
             string result;
-            int id;
+            int id, petId;
 
             MethodInfo[] methodInfo4 = typeof(IHealthRecordService).GetMethods();
             for (int i = 0; i < methodInfo4.Length; i++)
@@ -421,6 +424,8 @@ namespace PetsApp.UI
             switch (result)
             {
                 case "1":
+                    Console.WriteLine("🐱 Enter the petId of the health record you want to add.");
+                    petId = int.Parse(Console.ReadLine());
                     Console.WriteLine("🐱 Enter the weight of the health record you want to add.");
                     double weight = double.Parse(Console.ReadLine());
                     Console.WriteLine("🐱 Enter the gender of the health record you want to add.");
@@ -436,12 +441,14 @@ namespace PetsApp.UI
                         Allergie allergie = (Allergie)Enum.Parse(typeof(Allergie), item, ignoreCase: true);
                         allergies.Add(allergie);
                     }
-                    healthRecordService.Add(weight, gender, vaccinationInfo, allergies);
+                    healthRecordService.Add(petId, weight, gender, vaccinationInfo, allergies);
                     break;
                 case "2":
                     Console.Write("🐱 Health Record Id: ");
                     id = int.Parse(Console.ReadLine());
                     var healthRecord = healthRecordService.Get(id);
+                    Console.WriteLine("🐱 Enter the pet ID of the health record you want to add.");
+                    petId = int.Parse(Console.ReadLine());
                     Console.WriteLine("🐱 Enter the weight of the health record you want to update.");
                     weight = double.Parse(Console.ReadLine());
                     Console.WriteLine("🐱 Enter the gender of the health record you want to update.");
@@ -457,7 +464,7 @@ namespace PetsApp.UI
                         Allergie allergie = (Allergie)Enum.Parse(typeof(Allergie), item, ignoreCase: true);
                         allergies.Add(allergie);
                     }
-                    healthRecordService.Add(weight, gender, vaccinationInfo, allergies);
+                    healthRecordService.Update(id, weight, gender, vaccinationInfo, allergies);
                     break;
                 case "3":
                     Console.Write("🐱 Health Record Id: ");

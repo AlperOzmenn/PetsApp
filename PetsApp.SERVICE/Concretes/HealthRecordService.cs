@@ -13,14 +13,14 @@ namespace PetsApp.SERVICE.Concretes
         {
             _repo = repo;
         }
-        public void Add(double weight, Gender gender, VaccinationInfo vaccinationInfo, List<Allergie> allergies)
+        public void Add(int petId, double weight, Gender gender, VaccinationInfo vaccinationInfo, List<Allergie> allergies)
         {
-            if (string.IsNullOrEmpty(weight.ToString()) || string.IsNullOrEmpty(gender.ToString()) || string.IsNullOrEmpty(vaccinationInfo.ToString()))
+            if (string.IsNullOrEmpty(petId.ToString()) || string.IsNullOrEmpty(weight.ToString()) || string.IsNullOrEmpty(gender.ToString()) || string.IsNullOrEmpty(vaccinationInfo.ToString()))
             {
                 throw new ValidationException("Weight - Gender - VaccinationInfo", "Weight, Gender or Vaccination Info areas passed empty.");
 
 
-                _repo.HealthRecords.Create(new HealthRecord(weight, gender, vaccinationInfo, allergies));
+                _repo.HealthRecords.Create(new HealthRecord(petId, weight, gender, vaccinationInfo, allergies));
 
                 if (!_repo.Save())
                     throw new Exception("Health Record not registered!");

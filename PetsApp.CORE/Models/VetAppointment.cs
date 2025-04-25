@@ -40,7 +40,7 @@ namespace PetsApp.CORE.Models
 
         //Navigation Props
         public int PetOwnerId { get; set; }
-        public PetOwner PetOwner { get; set; }
+        public virtual PetOwner PetOwner { get; set; }
 
         public override string ToString()
         {

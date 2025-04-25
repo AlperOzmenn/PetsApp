@@ -4,7 +4,7 @@ namespace PetsApp.SERVICE.Contracts
 {
     public interface IPetService
     {
-        void Add(string name, string breed, string type, DateTime birthDate);
+        void Add(int petOwnerId,string name, string breed, string type, DateTime birthDate);
         void Update(int id, string name, string breed, string type, DateTime birthDate);
         void Delete(int id);
         void SoftDelete(int id);

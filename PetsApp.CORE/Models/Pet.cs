@@ -15,8 +15,9 @@ namespace PetsApp.CORE.Models
         {
             BirthDate = DateTime.Now;
         }
-        public Pet(string name, string breed, string type, DateTime birthDate)
+        public Pet(int petOwnerId, string name, string breed, string type, DateTime birthDate)
         {
+            PetOwnerId = petOwnerId;
             Name = name;
             Breed = breed;
 			Type = type;
@@ -61,10 +62,8 @@ namespace PetsApp.CORE.Models
         public int PetOwnerId { get; set; }
         public virtual PetOwner PetOwner { get; set; }
 
-        public int HealthRecordId { get; set; }
         public virtual HealthRecord HealthRecord { get; set; }
 
-        public int TrackerDeviceId { get; set; }
         public virtual TrackerDevice TrackerDevice { get; set; }
 
         public override string ToString()

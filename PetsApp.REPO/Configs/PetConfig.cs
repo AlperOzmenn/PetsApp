@@ -20,13 +20,13 @@ namespace PetsApp.REPO.Configs
 
             //Relations
             //1-1 HealtRecord
-            builder.HasOne(p => p.HealthRecord).WithOne(pd => pd.Pet).HasForeignKey<Pet>(x => x.HealthRecordId).OnDelete(DeleteBehavior.NoAction);
+            
 
             //1-1 TrackerDevice
-            builder.HasOne(p => p.TrackerDevice).WithOne(pd => pd.Pet).HasForeignKey<Pet>(x => x.TrackerDeviceId).OnDelete(DeleteBehavior.NoAction);
+            
 
             //1-n PetOwner
-            builder.HasOne(p => p.PetOwner).WithMany(pd => pd.Pets).HasForeignKey(x => x.PetOwnerId).OnDelete(DeleteBehavior.NoAction);
+            //builder.HasOne(p => p.PetOwner).WithMany(pd => pd.Pets).HasForeignKey(x => x.PetOwnerId).OnDelete(DeleteBehavior.NoAction);
 
         }
     }

@@ -13,12 +13,12 @@ namespace PetsApp.SERVICE.Concretes
         {
             _repo = repo;
         }
-        public void Add(string name, string breed, string type, DateTime birthDate)
+        public void Add(int petOwnerId, string name, string breed, string type, DateTime birthDate)
         {
             if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(breed) || string.IsNullOrEmpty(type) || string.IsNullOrEmpty(birthDate.ToString()))
                 throw new ValidationException("Name - Breed - Type - BirthDate", "Name Breed or Type areas passed empty.");
 
-            _repo.Pets.Create(new Pet(name, breed, type, birthDate));
+            _repo.Pets.Create(new Pet(petOwnerId ,name, breed, type, birthDate));
 
             if (!_repo.Save())
                 throw new Exception("Pet not registered!");

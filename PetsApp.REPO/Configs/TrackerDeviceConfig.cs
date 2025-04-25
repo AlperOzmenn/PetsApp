@@ -14,10 +14,12 @@ namespace PetsApp.REPO.Configs
             builder.HasQueryFilter(x => x.Status != Status.Deleted);
 
             //1-n Activity Log
-            builder.HasMany(p => p.ActivityLogs)
-                .WithOne(pd => pd.TrackerDevice)
-                .HasForeignKey(x => x.TrackerDeviceId)
-                .OnDelete(DeleteBehavior.NoAction);
+            //builder.HasMany(p => p.ActivityLogs)
+            //    .WithOne(pd => pd.TrackerDevice)
+            //    .HasForeignKey(x => x.TrackerDeviceId)
+            //    .OnDelete(DeleteBehavior.NoAction);
+
+           // builder.HasOne(p => p.Pet).WithOne(pd => pd.TrackerDevice).HasForeignKey<Pet>(x => x.Id).OnDelete(DeleteBehavior.NoAction);
         }
     }
 

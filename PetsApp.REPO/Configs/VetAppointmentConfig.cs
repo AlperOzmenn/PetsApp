@@ -14,6 +14,7 @@ namespace PetsApp.REPO.Configs
             builder.HasQueryFilter(x => x.Status != Status.Deleted);
             builder.Property(p => p.VetName).IsRequired().HasColumnType("nvarchar(50)");
             builder.Property(p => p.Description).IsRequired().HasColumnType("nvarchar(250)");
+
         }
     }
 }

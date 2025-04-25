@@ -19,15 +19,17 @@ namespace PetsApp.CORE.Models
             Allergies.Add(Allergie.Unknown); // Default UNKNOWN eğer alerji eklenirse unknown silinicek.
 
         }
-        public HealthRecord(double weight, Gender gender, VaccinationInfo vaccinationInfo)
+        public HealthRecord(int petId, double weight, Gender gender, VaccinationInfo vaccinationInfo)
         {
+            PetId = petId;
             VaccinationInfo = vaccinationInfo;
             Allergies.Add(Allergie.Unknown); // Default UNKNOWN eğer alerji eklenirse unknown silinicek.
             Weight = weight;
             Gender = gender;
         }
-        public HealthRecord(double weight, Gender gender, VaccinationInfo vaccinationInfo, List<Allergie> allergies)
+        public HealthRecord(int petId, double weight, Gender gender, VaccinationInfo vaccinationInfo, List<Allergie> allergies)
         {
+            PetId = petId;
             VaccinationInfo = vaccinationInfo;
             Allergies = allergies;
             Weight = weight;
@@ -48,7 +50,7 @@ namespace PetsApp.CORE.Models
         public VaccinationInfo VaccinationInfo { get; set; }
 
         //Alerjiler
-        public List<Allergie>? Allergies { get; set; } = new List<Allergie>();
+        public virtual List<Allergie>? Allergies { get; set; } = new List<Allergie>();
 
         //Navigation Props
         public int PetId { get; set; }
@@ -56,7 +58,7 @@ namespace PetsApp.CORE.Models
 
         public override string ToString()
         {
-            return $"Weight: {Weight} - Gender: {Gender} - Vaccination Information: {VaccinationInfo} - Allergies: {Allergies?.ToString()}";//alerjiler gelicek mi bilmiyorum :D
+            return $"PetID: {PetId} - Weight: {Weight} - Gender: {Gender} - Vaccination Information: {VaccinationInfo} - Allergies : {Allergies}";//alerjiler gelicek mi bilmiyorum :D
         }
     }
 }

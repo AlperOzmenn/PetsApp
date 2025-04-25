@@ -13,6 +13,10 @@ namespace PetsApp.REPO.Configs
             builder.HasKey(p => p.Id);
             builder.HasQueryFilter(x => x.Status != Status.Deleted);
             builder.Property(p => p.Weight).IsRequired().HasPrecision(5, 2);
+            builder.Ignore(x => x.Allergies);
+
+            //builder.HasOne(p => p.Pet).WithOne(pd => pd.HealthRecord).HasForeignKey<Pet>(x => x.Id).OnDelete(DeleteBehavior.NoAction);
         }
     }
+   
 }

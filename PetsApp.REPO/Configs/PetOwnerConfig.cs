@@ -17,7 +17,7 @@ namespace PetsApp.REPO.Configs
             builder.Ignore(x => x.FullName);
 
             //1-n VetAppointment
-            builder.HasMany(p => p.VetAppointments).WithOne(pd => pd.PetOwner).HasForeignKey(x => x.PetOwnerId).OnDelete(DeleteBehavior.NoAction);
+            //builder.HasMany(p => p.VetAppointments).WithOne(pd => pd.PetOwner).HasForeignKey(x => x.PetOwnerId).OnDelete(DeleteBehavior.NoAction);
 
 
         }
