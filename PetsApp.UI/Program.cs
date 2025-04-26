@@ -339,10 +339,10 @@ namespace PetsApp.UI
             switch (result)
             {
                 case "1":
-                    Console.WriteLine("🐱 Enter the tempature of the activity log you want to add.");
-                    double tempature = double.Parse(Console.ReadLine());
                     Console.WriteLine("🐱 Enter the trackerDeviceId of the activity log you want to add.");
                     int trackerDeviceId = int.Parse(Console.ReadLine());
+                    Console.WriteLine("🐱 Enter the tempature of the activity log you want to add.");
+                    double tempature = double.Parse(Console.ReadLine());
                     Console.WriteLine("🐱 Enter the distanceTraveledInMeters of the activity log you want to add.");
                     int distanceTraveledInMeters = int.Parse(Console.ReadLine());
                     Console.WriteLine("🐱 Enter the minutesOfWalking of the activity log you want to add.");
@@ -355,10 +355,10 @@ namespace PetsApp.UI
                     Console.Write("🐱 Activity Log Id: ");
                     id = int.Parse(Console.ReadLine());
                     var activityLog = activityLogService.Get(id);
-                    Console.WriteLine("🐱 Enter the tempature of the activity log you want to add.");
-                    tempature = double.Parse(Console.ReadLine());
                     Console.WriteLine("🐱 Enter the trackerDeviceId of the activity log you want to add.");
                     trackerDeviceId = int.Parse(Console.ReadLine());
+                    Console.WriteLine("🐱 Enter the tempature of the activity log you want to add.");
+                    tempature = double.Parse(Console.ReadLine());
                     Console.WriteLine("🐱 Enter the distanceTraveledInMeters of the activity log you want to add.");
                     distanceTraveledInMeters = int.Parse(Console.ReadLine());
                     Console.WriteLine("🐱 Enter the minutesOfWalking of the activity log you want to add.");

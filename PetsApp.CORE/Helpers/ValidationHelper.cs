@@ -48,7 +48,7 @@ namespace PetsApp.CORE.Helpers
 
         public static double TemperatureCheck(double temperature)
         {
-            if (temperature < 38 || temperature > 39)
+            if (temperature < 37.5 || temperature > 39.5)
                 throw new ArgumentOutOfRangeException($"{nameof(temperature)} WARNING: INACTIVITY DETECTED!!!");
             else
                 return temperature;
