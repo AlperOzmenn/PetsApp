@@ -16,15 +16,15 @@ namespace PetsApp.SERVICE.Concretes
         public void Add(int petId, double weight, Gender gender, VaccinationInfo vaccinationInfo, List<Allergie> allergies)
         {
             if (string.IsNullOrEmpty(petId.ToString()) || string.IsNullOrEmpty(weight.ToString()) || string.IsNullOrEmpty(gender.ToString()) || string.IsNullOrEmpty(vaccinationInfo.ToString()))
-            {
-                throw new ValidationException("Weight - Gender - VaccinationInfo", "Weight, Gender or Vaccination Info areas passed empty.");
+            
+                throw new ValidationException("PetId - Weight - Gender - VaccinationInfo", "PetId, Weight, Gender or Vaccination Info areas passed empty.");
 
 
                 _repo.HealthRecords.Create(new HealthRecord(petId, weight, gender, vaccinationInfo, allergies));
 
                 if (!_repo.Save())
                     throw new Exception("Health Record not registered!");
-            }
+            
         }
 
         public void Delete(int id)
@@ -70,14 +70,15 @@ namespace PetsApp.SERVICE.Concretes
                 throw new Exception("Health Record not registered!");
         }
 
-        public void Update(int id, double weight, Gender gender, VaccinationInfo vaccinationInfo, List<Allergie> allergies)
+        public void Update(int id, int petId, double weight, Gender gender, VaccinationInfo vaccinationInfo, List<Allergie> allergies)
         {
-            if (string.IsNullOrEmpty(weight.ToString()) || string.IsNullOrEmpty(gender.ToString()) || string.IsNullOrEmpty(vaccinationInfo.ToString()))
-            {
-                throw new ValidationException("Weight - Gender - VaccinationInfo", "Weight, Gender or Vaccination Info areas passed empty.");
+            if (string.IsNullOrEmpty(petId.ToString()) || string.IsNullOrEmpty(weight.ToString()) || string.IsNullOrEmpty(gender.ToString()) || string.IsNullOrEmpty(vaccinationInfo.ToString()))
+            
+                throw new ValidationException("PetID - Weight - Gender - VaccinationInfo", "PetID, Weight, Gender or Vaccination Info areas passed empty.");
 
                 var healthRecord = _repo.HealthRecords.GetById(id);
 
+                healthRecord.PetId = petId;
                 healthRecord.Weight = weight;
                 healthRecord.Gender = gender;
                 healthRecord.VaccinationInfo = vaccinationInfo;
@@ -87,7 +88,7 @@ namespace PetsApp.SERVICE.Concretes
 
                 if (!_repo.Save())
                     throw new Exception("Failed to update the Health Record.!");
-            }
+            
         }
     }
 }

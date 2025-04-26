@@ -58,7 +58,9 @@ namespace PetsApp.CORE.Models
 
         public override string ToString()
         {
-            return $"PetID: {PetId} - Weight: {Weight} - Gender: {Gender} - Vaccination Information: {VaccinationInfo} - Allergies : {Allergies}";//alerjiler gelicek mi bilmiyorum :D
+            string allergiesInfo = string.Join(", ", Allergies);
+            
+            return $"PetID: {PetId} - Weight: {Weight} - Gender: {Gender} - Vaccination Information: {VaccinationInfo} - Allergies: {allergiesInfo}";
         }
     }
 }

@@ -13,12 +13,12 @@ namespace PetsApp.SERVICE.Concretes
             _repo = repo;
         }
 
-        public void Add(string vetName, string description, DateTime appointmentDate)
+        public void Add(int petOwnerId, string vetName, string description, DateTime appointmentDate)
         {
 
-            if (string.IsNullOrEmpty(vetName) || string.IsNullOrEmpty(description) || string.IsNullOrEmpty(appointmentDate.ToString()))
+            if (string.IsNullOrEmpty(petOwnerId.ToString()) || string.IsNullOrEmpty(vetName) || string.IsNullOrEmpty(description) || string.IsNullOrEmpty(appointmentDate.ToString()))
                 throw new ValidationException("VetName - Description - AppointmentDate", "VetName, Description or AppointmentDate areas passed empty.");
-            _repo.VetAppointments.Create(new VetAppointment(vetName, description, appointmentDate));
+            _repo.VetAppointments.Create(new VetAppointment(petOwnerId, vetName, description, appointmentDate));
             if (!_repo.Save())
                 throw new Exception("VetAppointment not registered!");
         }
@@ -61,12 +61,13 @@ namespace PetsApp.SERVICE.Concretes
                 throw new Exception("VetAppointment not registered!");
         }
 
-        public void Update(int id, string vetName, string description, DateTime appointmentDate)
+        public void Update(int id, int petOwnerId, string vetName, string description, DateTime appointmentDate)
         {
-            if (string.IsNullOrEmpty(vetName) || string.IsNullOrEmpty(description) || string.IsNullOrEmpty(appointmentDate.ToString()))
-                throw new ValidationException("VetName - Description - AppointmentDate", "VetName, Description or AppointmentDate areas passed empty.");
+            if (string.IsNullOrEmpty(petOwnerId.ToString()) || string.IsNullOrEmpty(vetName) || string.IsNullOrEmpty(description) || string.IsNullOrEmpty(appointmentDate.ToString()))
+                throw new ValidationException("PetOwnerId - VetName - Description - AppointmentDate", "PetOwnerId, VetName, Description or AppointmentDate areas passed empty.");
 
             var vetAppointment = _repo.VetAppointments.GetById(id);
+            vetAppointment.PetOwnerId = petOwnerId;
             vetAppointment.VetName = vetName;
             vetAppointment.Description = description;
             vetAppointment.AppointmentDate = appointmentDate;

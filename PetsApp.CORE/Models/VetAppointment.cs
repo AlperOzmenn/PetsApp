@@ -10,8 +10,9 @@ namespace PetsApp.CORE.Models
         private string _description;
 
         public VetAppointment(){ }
-        public VetAppointment(string vetName, string description, DateTime appointmentDate)
+        public VetAppointment(int petOwnerId, string vetName, string description, DateTime appointmentDate)
         {
+            PetOwnerId = petOwnerId;
             AppointmentDate = appointmentDate;
             VetName = vetName;
             Description = description;

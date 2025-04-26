@@ -1,6 +1,4 @@
 ﻿using System.Reflection;
-using System.Security.Cryptography.X509Certificates;
-using System.Xml.Linq;
 using PetsApp.CORE.Enums;
 using PetsApp.CORE.Models;
 using PetsApp.REPO.Contexts;
@@ -31,7 +29,7 @@ namespace PetsApp.UI
         private static void MainUI(IPetOwnerService petOwnerService, IPetService petService, IHealthRecordService healthRecordService, ITrackerDeviceService trackerDeviceService, IActivityLogService activityLogService, IVetAppointmentService vetAppointmentService)
         {
             bool exit = true;
-            string result;
+            string? result;
 
             Console.WriteLine("\t\tWELCOME TO PETSAPP 🐱\n");
 
@@ -75,8 +73,9 @@ namespace PetsApp.UI
 
         static void PetOwnerUI(IPetOwnerService petOwnerService)
         {
-            
-            string firstName, lastName, result;
+
+            string? firstName, lastName;
+            string? result;
             int id;
             PetOwner petOwner;
 
@@ -162,7 +161,7 @@ namespace PetsApp.UI
 
         static void PetUI(IPetService petService)
         {
-            string name, type, breed, result;
+            string? name, type, breed, result;
             int id, petOwnerId;
             DateTime birthDate;
             Pet pet;
@@ -254,7 +253,7 @@ namespace PetsApp.UI
 
         static void TrackerDeviceUI(ITrackerDeviceService trackerDeviceService)
         {
-            string result;
+            string? result;
             int id;
 
             MethodInfo[] methodInfo2 = typeof(ITrackerDeviceService).GetMethods();
@@ -326,7 +325,7 @@ namespace PetsApp.UI
 
         static void ActivityLogUI(IActivityLogService activityLogService)
         {
-            string result;
+            string? result;
             int id;
 
             MethodInfo[] methodInfo3 = typeof(IActivityLogService).GetMethods();
@@ -409,8 +408,9 @@ namespace PetsApp.UI
         }
 
         static void HealthRecord(IHealthRecordService healthRecordService)
+
         {
-            string result;
+            string? result;
             int id, petId;
 
             MethodInfo[] methodInfo4 = typeof(IHealthRecordService).GetMethods();
@@ -464,7 +464,7 @@ namespace PetsApp.UI
                         Allergie allergie = (Allergie)Enum.Parse(typeof(Allergie), item, ignoreCase: true);
                         allergies.Add(allergie);
                     }
-                    healthRecordService.Update(id, weight, gender, vaccinationInfo, allergies);
+                    healthRecordService.Update(id, petId, weight, gender, vaccinationInfo, allergies);
                     break;
                 case "3":
                     Console.Write("🐱 Health Record Id: ");
@@ -508,8 +508,8 @@ namespace PetsApp.UI
 
         static void VetAppointment(IVetAppointmentService vetAppointmentService)
         {
-            string result;
-            int id;
+            string? result;
+            int id,petOwnerId;
 
             MethodInfo[] methodInfo5 = typeof(IVetAppointmentService).GetMethods();
             for (int i = 0; i < methodInfo5.Length; i++)
@@ -522,6 +522,8 @@ namespace PetsApp.UI
             switch (result)
             {
                 case "1":
+                    Console.WriteLine("🐱 Enter the PetOwnerId of the VetAppointment you want to add.");
+                    petOwnerId = int.Parse(Console.ReadLine());
                     Console.WriteLine("🐱 Enter the vetName of the VetAppointment you want to add.");
                     string vetName = Console.ReadLine();
                     Console.WriteLine("🐱 Enter the description of the VetAppointment you want to add.");
@@ -529,12 +531,14 @@ namespace PetsApp.UI
                     Console.WriteLine("🐱 Enter the vetAppointmentDate of the VetAppointment you want to add.");
                     DateTime vetAppointmentDate = DateTime.Parse(Console.ReadLine());
 
-                    vetAppointmentService.Add(vetName, description, vetAppointmentDate);
+                    vetAppointmentService.Add(petOwnerId, vetName, description, vetAppointmentDate);
                     break;
                 case "2":
                     Console.Write("🐱 VetAppointment Id: ");
                     id = int.Parse(Console.ReadLine());
                     var vetAppointment = vetAppointmentService.Get(id);
+                    Console.WriteLine("🐱 Enter the PetOwnerId of the VetAppointment you want to add.");
+                    petOwnerId = int.Parse(Console.ReadLine());
                     Console.WriteLine("🐱 Enter the vetName of the VetAppointment you want to update.");
                     vetName = Console.ReadLine();
                     Console.WriteLine("🐱 Enter the description of the VetAppointment you want to update.");
@@ -542,7 +546,7 @@ namespace PetsApp.UI
                     Console.WriteLine("🐱 Enter the vetAppointmentDate of the VetAppointment you want to update.");
                     vetAppointmentDate = DateTime.Parse(Console.ReadLine());
 
-                    vetAppointmentService.Update(id, vetName, description, vetAppointmentDate);
+                    vetAppointmentService.Update(id, petOwnerId, vetName, description, vetAppointmentDate);
                     break;
                 case "3":
                     Console.Write("🐱 VetAppointment Id: ");
